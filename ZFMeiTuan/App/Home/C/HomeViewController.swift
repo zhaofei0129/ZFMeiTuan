@@ -42,7 +42,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let arrowBtn = UIButton(frame: CGRect(x: CGRectGetMaxX(locationBtn.frame), y: 11, width: 10, height: 22))
         arrowBtn.setImage(UIImage(named: "home_navBar_arrow_up"), forState: .Normal)
         arrowBtn.setImage(UIImage(named: "home_navBar_arrow_down"), forState: .Selected)
-        arrowBtn.tag = 101
+        arrowBtn.tag = 100
+        arrowBtn.selected = false
         arrowBtn.addTarget(self, action: "onLocationBtn:", forControlEvents: .TouchUpInside)
         navBar?.addSubview(arrowBtn)
 
@@ -140,7 +141,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if section == 4 {
             let footerView = UIView(frame: CGRect(x: 0, y: 0, width: gScreenWidth, height: 180))
-//            footerView.backgroundColor = UIColor.grayColor()
             
             // 查看全部团购
             let seeAllBtn = UIButton(frame: CGRect(x: 10, y: 10, width: gScreenWidth - 10 - 10, height: 30))
@@ -163,7 +163,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let backViewLabel = UILabel(frame: CGRect(x: 10, y: 10, width: backView.frame.width - 10 - 10, height: 50))
             backViewLabel.numberOfLines = 2
             backViewLabel.text = "愿意让我们更了解你吗\n让美团的推荐更符合你的胃口"
-            backViewLabel.tintColor = UIColor.grayColor()
+            backViewLabel.textColor = UIColor.grayColor()
             backViewLabel.font = UIFont.systemFontOfSize(15)
             backViewLabel.textAlignment = .Center
             backView.addSubview(backViewLabel)
@@ -254,9 +254,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // MARK: Action
     func onLocationBtn(sender: UIButton) {
         print("onLocationBtn")
-        //        let btn = view.viewWithTag(101) as! UIButton
-        //        btn.selected = true
-        sender.selected = true
+        let btn = navigationController?.navigationBar.viewWithTag(100) as! UIButton
+        btn.selected = !btn.selected
     }
     
     func onMsgBtn(sender: UIButton) {
