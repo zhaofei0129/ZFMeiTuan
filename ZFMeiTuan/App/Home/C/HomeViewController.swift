@@ -86,8 +86,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         view.addSubview(tableView)
     }
     
-    
-    
     // MARK: UITableViewDataSource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 5
