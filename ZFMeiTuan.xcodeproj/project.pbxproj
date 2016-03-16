@@ -8,20 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		A45F77331C984B370026635B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45F77321C984B370026635B /* AppDelegate.swift */; };
-		A45F77351C984B370026635B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45F77341C984B370026635B /* ViewController.swift */; };
 		A45F77381C984B370026635B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A45F77361C984B370026635B /* Main.storyboard */; };
 		A45F773A1C984B370026635B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A45F77391C984B370026635B /* Assets.xcassets */; };
-		A45F773D1C984B370026635B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A45F773B1C984B370026635B /* LaunchScreen.storyboard */; };
+		A45F77631C985FFE0026635B /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45F77621C985FFE0026635B /* MineViewController.swift */; };
+		A45F77651C9860090026635B /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45F77641C9860090026635B /* MoreViewController.swift */; };
+		A45F77671C9860140026635B /* BusinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45F77661C9860140026635B /* BusinessViewController.swift */; };
+		A45F77691C98602A0026635B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45F77681C98602A0026635B /* HomeViewController.swift */; };
+		A45F776B1C9863C90026635B /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45F776A1C9863C90026635B /* Global.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A45F772F1C984B370026635B /* ZFMeiTuan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZFMeiTuan.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A45F77321C984B370026635B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A45F77341C984B370026635B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A45F77321C984B370026635B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ZFMeiTuan/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		A45F77371C984B370026635B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A45F77391C984B370026635B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A45F773C1C984B370026635B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A45F773E1C984B370026635B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A45F77621C985FFE0026635B /* MineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
+		A45F77641C9860090026635B /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		A45F77661C9860140026635B /* BusinessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessViewController.swift; sourceTree = "<group>"; };
+		A45F77681C98602A0026635B /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A45F776A1C9863C90026635B /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +60,177 @@
 		A45F77311C984B370026635B /* ZFMeiTuan */ = {
 			isa = PBXGroup;
 			children = (
-				A45F77321C984B370026635B /* AppDelegate.swift */,
-				A45F77341C984B370026635B /* ViewController.swift */,
+				A45F77441C985F690026635B /* App */,
+				A45F775A1C985F690026635B /* ConfigFile */,
+				A45F775B1C985F690026635B /* Resource */,
+				A45F775C1C985F690026635B /* ThirdPartyLibrary */,
 				A45F77361C984B370026635B /* Main.storyboard */,
 				A45F77391C984B370026635B /* Assets.xcassets */,
-				A45F773B1C984B370026635B /* LaunchScreen.storyboard */,
 				A45F773E1C984B370026635B /* Info.plist */,
 			);
 			path = ZFMeiTuan;
+			sourceTree = "<group>";
+		};
+		A45F77441C985F690026635B /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A45F77321C984B370026635B /* AppDelegate.swift */,
+				A45F774B1C985F690026635B /* Home */,
+				A45F77461C985F690026635B /* Business */,
+				A45F77501C985F690026635B /* Mine */,
+				A45F77551C985F690026635B /* More */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A45F77461C985F690026635B /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				A45F77471C985F690026635B /* C */,
+				A45F77491C985F690026635B /* M */,
+				A45F774A1C985F690026635B /* V */,
+			);
+			path = Business;
+			sourceTree = "<group>";
+		};
+		A45F77471C985F690026635B /* C */ = {
+			isa = PBXGroup;
+			children = (
+				A45F77661C9860140026635B /* BusinessViewController.swift */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		A45F77491C985F690026635B /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		A45F774A1C985F690026635B /* V */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		A45F774B1C985F690026635B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A45F774C1C985F690026635B /* C */,
+				A45F774E1C985F690026635B /* M */,
+				A45F774F1C985F690026635B /* V */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		A45F774C1C985F690026635B /* C */ = {
+			isa = PBXGroup;
+			children = (
+				A45F77681C98602A0026635B /* HomeViewController.swift */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		A45F774E1C985F690026635B /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		A45F774F1C985F690026635B /* V */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		A45F77501C985F690026635B /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				A45F77511C985F690026635B /* C */,
+				A45F77531C985F690026635B /* M */,
+				A45F77541C985F690026635B /* V */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		A45F77511C985F690026635B /* C */ = {
+			isa = PBXGroup;
+			children = (
+				A45F77621C985FFE0026635B /* MineViewController.swift */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		A45F77531C985F690026635B /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		A45F77541C985F690026635B /* V */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		A45F77551C985F690026635B /* More */ = {
+			isa = PBXGroup;
+			children = (
+				A45F77561C985F690026635B /* C */,
+				A45F77581C985F690026635B /* M */,
+				A45F77591C985F690026635B /* V */,
+			);
+			path = More;
+			sourceTree = "<group>";
+		};
+		A45F77561C985F690026635B /* C */ = {
+			isa = PBXGroup;
+			children = (
+				A45F77641C9860090026635B /* MoreViewController.swift */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		A45F77581C985F690026635B /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		A45F77591C985F690026635B /* V */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		A45F775A1C985F690026635B /* ConfigFile */ = {
+			isa = PBXGroup;
+			children = (
+				A45F776A1C9863C90026635B /* Global.swift */,
+			);
+			path = ConfigFile;
+			sourceTree = "<group>";
+		};
+		A45F775B1C985F690026635B /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		A45F775C1C985F690026635B /* ThirdPartyLibrary */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ThirdPartyLibrary;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,7 +292,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A45F773D1C984B370026635B /* LaunchScreen.storyboard in Resources */,
 				A45F773A1C984B370026635B /* Assets.xcassets in Resources */,
 				A45F77381C984B370026635B /* Main.storyboard in Resources */,
 			);
@@ -136,8 +304,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A45F77351C984B370026635B /* ViewController.swift in Sources */,
 				A45F77331C984B370026635B /* AppDelegate.swift in Sources */,
+				A45F77651C9860090026635B /* MoreViewController.swift in Sources */,
+				A45F776B1C9863C90026635B /* Global.swift in Sources */,
+				A45F77671C9860140026635B /* BusinessViewController.swift in Sources */,
+				A45F77631C985FFE0026635B /* MineViewController.swift in Sources */,
+				A45F77691C98602A0026635B /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,14 +322,6 @@
 				A45F77371C984B370026635B /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		A45F773B1C984B370026635B /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A45F773C1C984B370026635B /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -248,7 +412,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = ZFMeiTuan/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhaofei.ZFMeiTuan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -259,7 +425,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = ZFMeiTuan/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhaofei.ZFMeiTuan;
 				PRODUCT_NAME = "$(TARGET_NAME)";

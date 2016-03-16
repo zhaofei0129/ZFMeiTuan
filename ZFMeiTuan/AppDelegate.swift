@@ -13,9 +13,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    func getRootViewController() -> UIViewController {
+        // 设置tabBarController
+        let rootVC = UITabBarController()
+        
+        // 设置VCs
+        let vc0 = HomeViewController()
+        let nc0 = UINavigationController(rootViewController: vc0)
+        let vc1 = BusinessViewController()
+        let nc1 = UINavigationController(rootViewController: vc1)
+        let vc2 = MineViewController()
+        let nc2 = UINavigationController(rootViewController: vc2)
+        let vc3 = MoreViewController()
+        let nc3 = UINavigationController(rootViewController: vc3)
+        rootVC.setViewControllers([nc0, nc1, nc2, nc3], animated: true)
+        
+        // 设置tabBar
+        let tabBar =  rootVC.tabBar
+        tabBar.tintColor = gSystemGreen
+        let item0 = tabBar.items![0]
+        item0.title = "首页"
+        item0.image = UIImage(named: "tabBar_home")
+        item0.selectedImage = UIImage(named: "tabBar_home_selected")?.imageWithRenderingMode(.AlwaysOriginal)
+        let item1 = tabBar.items![1]
+        item1.title = "商家"
+        item1.image = UIImage(named: "tabBar_business")
+        item1.selectedImage = UIImage(named: "tabBar_business_selected")?.imageWithRenderingMode(.AlwaysOriginal)
+        let item2 = tabBar.items![2]
+        item2.title = "我的"
+        item2.image = UIImage(named: "tabBar_mine")
+        item2.selectedImage = UIImage(named: "tabBar_mine_selected")?.imageWithRenderingMode(.AlwaysOriginal)
+        let item3 = tabBar.items![3]
+        item3.title = "更多"
+        item3.image = UIImage(named: "tabBar_more")
+        item3.selectedImage = UIImage(named: "tabBar_more_selected")?.imageWithRenderingMode(.AlwaysOriginal)
 
+        return rootVC
+    }
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        window?.backgroundColor = UIColor.whiteColor()
+        window?.rootViewController = getRootViewController()
+        window?.makeKeyAndVisible()
+        
         return true
     }
 
