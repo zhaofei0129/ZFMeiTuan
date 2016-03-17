@@ -8,28 +8,141 @@
 
 import UIKit
 
-class MoreViewController: UIViewController {
-
+class MoreViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    var tableView: UITableView!
+    
+    var dataSourceArray: [AnyObject] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        setNavBar()
+        initData()
+        initView()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func setNavBar() {
+        title = "更多"
     }
-    */
-
+    
+    func initData() {
+        dataSourceArray = [
+            ["扫一扫"],
+            ["省流量模式", "消息提醒", "邀请好友使用美团", "清空缓存"],
+            ["意见反馈", "问卷调查", "支付帮助", "网络诊断", "关于美团", "我要应聘"],
+            ["精品应用"]
+        ]
+    }
+    
+    func initView() {
+        // 设置tableView
+        tableView = UITableView(frame: view.frame, style: .Grouped)
+        tableView.dataSource = self
+        tableView.delegate = self
+        view.addSubview(tableView)
+    }
+    
+    // MARK: UITableViewDataSource
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return dataSourceArray.count
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataSourceArray[section].count
+    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 10
+        } else {
+            return 0.0001
+        }
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 44
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let section = indexPath.section
+        let row = indexPath.row
+        let cellIndentifier = "moreCell"
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellIndentifier)
+        if cell == nil {
+            cell = UITableViewCell(style: .Default, reuseIdentifier: cellIndentifier)
+        }
+        cell?.textLabel?.text = dataSourceArray[section].objectAtIndex(row) as? String
+        cell?.textLabel?.font = UIFont.systemFontOfSize(15)
+        cell?.accessoryType = .DisclosureIndicator
+        
+        if section == 1 && row == 0 {
+            cell?.accessoryType = .None
+            cell?.selectionStyle = .None
+            let flowSwitch = UISwitch()
+            flowSwitch.center = CGPoint(x: gScreenWidth - 10 - flowSwitch.frame.width / 2, y: 22)
+            flowSwitch.onTintColor = gSystemGreen
+            flowSwitch.addTarget(self, action: "onSwitch:", forControlEvents: .ValueChanged)
+            cell?.contentView.addSubview(flowSwitch)
+        }
+        return cell!
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let section = indexPath.section
+        let row = indexPath.row
+        switch(section) {
+        case 0:
+            print("section 0")
+        case 1:
+            switch row {
+            case 0:
+                print("section 1, row 0")
+            case 1:
+                print("section 1, row 1")
+            case 2:
+                print("section 1, row 2")
+            case 3:
+                print("section 1, row 3")
+            default:
+                print("default")
+            }
+        case 2:
+            switch row {
+            case 0:
+                print("section 2, row 0")
+            case 1:
+                print("section 2, row 1")
+            case 2:
+                print("section 2, row 2")
+            case 3:
+                print("section 2, row 3")
+            case 4:
+                print("section 2, row 4")
+            case 5:
+                print("section 2, row 5")
+            default:
+                print("default")
+            }
+        case 3:
+            print("section 3")		
+        default:
+            print("default")
+        }
+    }	
+    
+    // MARK: Action
+    func onSwitch(sender: UISwitch) {
+        if sender.on {
+            print("switch on")
+        } else {
+            print("switch off")
+        }
+    }
 }

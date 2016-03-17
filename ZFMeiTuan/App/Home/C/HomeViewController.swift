@@ -24,15 +24,15 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func initData() {
-        recommendationArray = ["1", "2", "3", "4"]
+        recommendationArray = ["0", "1", "2", "3", "4"]
     }
     
     func setNavBar() {
         let navBar = navigationController?.navigationBar
         navBar?.barTintColor = gSystemGreen
+        navBar?.barStyle = .Black
         
         // 设置地点Button
-        
         let locationBtn = UIButton(frame: CGRect(x: 10, y: 11, width: 40, height: 22))
         locationBtn.titleLabel?.font = UIFont.systemFontOfSize(15)
         locationBtn.setTitle("南京", forState: .Normal)
@@ -46,13 +46,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         arrowBtn.selected = false
         arrowBtn.addTarget(self, action: "onLocationBtn:", forControlEvents: .TouchUpInside)
         navBar?.addSubview(arrowBtn)
-
+        
         // 设置消息Button
         let msgBtn = UIButton(frame: CGRect(x: gScreenWidth - 10 - 22, y: 11, width: 22, height: 22))
         msgBtn.setImage(UIImage(named: "home_navBar_msg"), forState: .Normal)
         msgBtn.addTarget(self, action: "onMsgBtn:", forControlEvents: .TouchUpInside)
         navBar?.addSubview(msgBtn)
-
+        
         // 设置扫一扫Button
         let scanningBtn = UIButton(frame: CGRect(x: CGRectGetMinX(msgBtn.frame) - 10 - 22, y: 11, width: 22, height: 22))
         scanningBtn.setImage(UIImage(named: "home_navBar_scanning"), forState: .Normal)
@@ -66,7 +66,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         searchBtn.layer.cornerRadius = 14
         searchBtn.addTarget(self, action: "onSearchBtn:", forControlEvents: .TouchUpInside)
         navBar?.addSubview(searchBtn)
-
+        
         let searchImageView = UIImageView(frame: CGRect(x: 5, y: 5, width: 24, height: 24))
         searchImageView.image = UIImage(named: "home_navBar_search")
         searchBtn.addSubview(searchImageView)
@@ -80,7 +80,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func initView() {
         // 设置tableView
-        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: gScreenWidth, height: gScreenHeight), style: .Grouped)
+        // tableView = UITableView(frame: CGRect(x: 0, y: 0, width: gScreenWidth, height: gScreenHeight), style: .Grouped)
+        tableView = UITableView(frame: view.frame, style: .Grouped)
         tableView.dataSource = self
         tableView.delegate = self
         view.addSubview(tableView)
@@ -150,7 +151,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             seeAllBtn.layer.cornerRadius = 3
             seeAllBtn.addTarget(self, action: "onSeeAllBtn:", forControlEvents: .TouchUpInside)
             footerView.addSubview(seeAllBtn)
-
+            
             // 我的每团DNA
             let backView = UIView(frame: CGRect(x: 10, y: CGRectGetMaxY(seeAllBtn.frame) + 10, width: gScreenWidth - 10 - 10, height: footerView.frame.height - CGRectGetMaxY(seeAllBtn.frame) - 10))
             backView.backgroundColor = UIColor.whiteColor()
@@ -252,8 +253,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // MARK: Action
     func onLocationBtn(sender: UIButton) {
         print("onLocationBtn")
-        let btn = navigationController?.navigationBar.viewWithTag(100) as! UIButton
-        btn.selected = !btn.selected
+        let arrowBtn = navigationController?.navigationBar.viewWithTag(100) as! UIButton
+        arrowBtn.selected = !arrowBtn.selected
     }
     
     func onMsgBtn(sender: UIButton) {
@@ -275,4 +276,5 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func onBackViewBtn(sender: UIButton) {
         print("onBackViewBtn")
     }
+    
 }
