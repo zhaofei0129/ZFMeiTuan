@@ -15,6 +15,10 @@
 		A45F77671C9860140026635B /* BusinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45F77661C9860140026635B /* BusinessViewController.swift */; };
 		A45F77691C98602A0026635B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45F77681C98602A0026635B /* HomeViewController.swift */; };
 		A45F776B1C9863C90026635B /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45F776A1C9863C90026635B /* Global.swift */; };
+		A49D6E2A1C9C1EA800973753 /* HomeMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D6E291C9C1EA800973753 /* HomeMenuTableViewCell.swift */; };
+		A49D6E2C1C9C238400973753 /* HomeMenuBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D6E2B1C9C238400973753 /* HomeMenuBtn.swift */; };
+		A49D6E2E1C9C25AB00973753 /* HomeRecommendationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D6E2D1C9C25AB00973753 /* HomeRecommendationTableViewCell.swift */; };
+		A49D6E321C9C27B900973753 /* HomeRecommendationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D6E311C9C27B900973753 /* HomeRecommendationModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		A45F77661C9860140026635B /* BusinessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessViewController.swift; sourceTree = "<group>"; };
 		A45F77681C98602A0026635B /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A45F776A1C9863C90026635B /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		A49D6E291C9C1EA800973753 /* HomeMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeMenuTableViewCell.swift; sourceTree = "<group>"; };
+		A49D6E2B1C9C238400973753 /* HomeMenuBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeMenuBtn.swift; sourceTree = "<group>"; };
+		A49D6E2D1C9C25AB00973753 /* HomeRecommendationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeRecommendationTableViewCell.swift; sourceTree = "<group>"; };
+		A49D6E311C9C27B900973753 /* HomeRecommendationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeRecommendationModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +144,7 @@
 		A45F774E1C985F690026635B /* M */ = {
 			isa = PBXGroup;
 			children = (
+				A49D6E311C9C27B900973753 /* HomeRecommendationModel.swift */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -143,6 +152,9 @@
 		A45F774F1C985F690026635B /* V */ = {
 			isa = PBXGroup;
 			children = (
+				A49D6E291C9C1EA800973753 /* HomeMenuTableViewCell.swift */,
+				A49D6E2B1C9C238400973753 /* HomeMenuBtn.swift */,
+				A49D6E2D1C9C25AB00973753 /* HomeRecommendationTableViewCell.swift */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -305,11 +317,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				A45F77331C984B370026635B /* AppDelegate.swift in Sources */,
+				A49D6E321C9C27B900973753 /* HomeRecommendationModel.swift in Sources */,
 				A45F77651C9860090026635B /* MoreViewController.swift in Sources */,
 				A45F776B1C9863C90026635B /* Global.swift in Sources */,
 				A45F77671C9860140026635B /* BusinessViewController.swift in Sources */,
+				A49D6E2C1C9C238400973753 /* HomeMenuBtn.swift in Sources */,
+				A49D6E2A1C9C1EA800973753 /* HomeMenuTableViewCell.swift in Sources */,
 				A45F77631C985FFE0026635B /* MineViewController.swift in Sources */,
 				A45F77691C98602A0026635B /* HomeViewController.swift in Sources */,
+				A49D6E2E1C9C25AB00973753 /* HomeRecommendationTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,10 +429,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ZFMeiTuan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zhaofei.ZFMeiTuan;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhaofei.ZFMeiTuan1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -426,10 +443,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ZFMeiTuan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zhaofei.ZFMeiTuan;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhaofei.ZFMeiTuan1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

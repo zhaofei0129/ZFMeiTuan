@@ -12,7 +12,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var tableView: UITableView!
     
-    var recommendationArray: [AnyObject] = []
+    var recommendationArray: [HomeRecommendationModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func initData() {
-        recommendationArray = ["0", "1", "2", "3", "4"]
     }
     
     func setNavBar() {
@@ -36,7 +35,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let locationBtn = UIButton(frame: CGRect(x: 10, y: 11, width: 40, height: 22))
         locationBtn.titleLabel?.font = UIFont.systemFontOfSize(15)
         locationBtn.setTitle("南京", forState: .Normal)
-        locationBtn.addTarget(self, action: "onLocationBtn:", forControlEvents: .TouchUpInside)
+        locationBtn.addTarget(self, action: #selector(HomeViewController.onLocationBtn(_:)), forControlEvents: .TouchUpInside)
         navBar?.addSubview(locationBtn)
         
         let arrowBtn = UIButton(frame: CGRect(x: CGRectGetMaxX(locationBtn.frame), y: 11, width: 10, height: 22))
@@ -44,19 +43,19 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         arrowBtn.setImage(UIImage(named: "home_navBar_arrow_down"), forState: .Selected)
         arrowBtn.tag = 100
         arrowBtn.selected = false
-        arrowBtn.addTarget(self, action: "onLocationBtn:", forControlEvents: .TouchUpInside)
+        arrowBtn.addTarget(self, action: #selector(HomeViewController.onLocationBtn(_:)), forControlEvents: .TouchUpInside)
         navBar?.addSubview(arrowBtn)
         
         // 设置消息Button
         let msgBtn = UIButton(frame: CGRect(x: gScreenWidth - 10 - 22, y: 11, width: 22, height: 22))
         msgBtn.setImage(UIImage(named: "home_navBar_msg"), forState: .Normal)
-        msgBtn.addTarget(self, action: "onMsgBtn:", forControlEvents: .TouchUpInside)
+        msgBtn.addTarget(self, action: #selector(HomeViewController.onMsgBtn(_:)), forControlEvents: .TouchUpInside)
         navBar?.addSubview(msgBtn)
         
         // 设置扫一扫Button
         let scanningBtn = UIButton(frame: CGRect(x: CGRectGetMinX(msgBtn.frame) - 10 - 22, y: 11, width: 22, height: 22))
         scanningBtn.setImage(UIImage(named: "home_navBar_scanning"), forState: .Normal)
-        scanningBtn.addTarget(self, action: "onScanningBtn:", forControlEvents: .TouchUpInside)
+        scanningBtn.addTarget(self, action: #selector(HomeViewController.onScanningBtn(_:)), forControlEvents: .TouchUpInside)
         navBar?.addSubview(scanningBtn)
         
         // 设置搜索框Button
@@ -64,7 +63,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         searchBtn.backgroundColor = UIColor.whiteColor()
         searchBtn.layer.masksToBounds = true
         searchBtn.layer.cornerRadius = 14
-        searchBtn.addTarget(self, action: "onSearchBtn:", forControlEvents: .TouchUpInside)
+        searchBtn.addTarget(self, action: #selector(HomeViewController.onSearchBtn(_:)), forControlEvents: .TouchUpInside)
         navBar?.addSubview(searchBtn)
         
         let searchImageView = UIImageView(frame: CGRect(x: 5, y: 5, width: 24, height: 24))
@@ -85,6 +84,30 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.dataSource = self
         tableView.delegate = self
         view.addSubview(tableView)
+        
+        setUpTableView()
+    }
+    
+    func setUpTableView() {
+        refreshData()
+    }
+    
+    func refreshData() {
+        getRecommenData()
+    }
+    
+    func getRecommenData() {
+        let recommendationModel = HomeRecommendationModel()
+        recommendationModel.shopImageName = "home_recommend_cell_shop_hanbaowang"
+        recommendationModel.distance = 6.2
+        recommendationModel.shopName = "汉堡王"
+        recommendationModel.shopInfo = "[万谷慧生活广场等]汉堡王草莓新地/巧克力新地买一送一1份"
+        recommendationModel.price = 8
+        recommendationModel.soldedNumber = 22490
+        
+        for _ in 0 ..< 10 {
+            recommendationArray.append(recommendationModel)
+        }
     }
     
     // MARK: UITableViewDataSource
@@ -149,7 +172,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             seeAllBtn.titleLabel?.font = UIFont.systemFontOfSize(15)
             seeAllBtn.layer.masksToBounds = true
             seeAllBtn.layer.cornerRadius = 3
-            seeAllBtn.addTarget(self, action: "onSeeAllBtn:", forControlEvents: .TouchUpInside)
+            seeAllBtn.addTarget(self, action: #selector(HomeViewController.onSeeAllBtn(_:)), forControlEvents: .TouchUpInside)
             footerView.addSubview(seeAllBtn)
             
             // 我的每团DNA
@@ -174,7 +197,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             backViewBtn.layer.masksToBounds = true
             backViewBtn.layer.cornerRadius = 3
             backViewBtn.titleLabel?.font = UIFont.systemFontOfSize(17)
-            backViewBtn.addTarget(self, action: "onBackViewBtn:", forControlEvents: .TouchUpInside)
+            backViewBtn.addTarget(self, action: #selector(HomeViewController.onBackViewBtn(_:)), forControlEvents: .TouchUpInside)
             backView.addSubview(backViewBtn)
             
             return footerView
@@ -187,12 +210,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let row = indexPath.row
         let section = indexPath.section
         if section == 0 {
+            // 菜单
             let cellIdentifier = "menuCell"
             var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
             if cell == nil {
-                cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
+                cell = HomeMenuTableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
             }
-            cell?.textLabel?.text = "section0"
+            cell!.selectionStyle = .None
             return cell!
         } else if section == 1 {
             let cellIdentifier = "cuxiao0Cell"
@@ -217,34 +241,37 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 if cell == nil {
                     cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
                 }
-                cell?.textLabel?.text = "section3 row0"
+                cell?.textLabel?.text = "热门频道"
+                cell!.imageView!.image = UIImage(named: "home_cell_hot")
                 return cell!
             } else {
-                
+                let cellIdentifier = "gezhongpindaoCell"
+                var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
+                if cell == nil {
+                    cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
+                }
+                cell?.textLabel?.text = "section3 row1"
+                return cell!
             }
-            let cellIdentifier = "gezhongindaoCell"
-            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
-            if cell == nil {
-                cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
-            }
-            cell?.textLabel?.text = "section3 row1"
-            return cell!
         } else {
             if row == 0 {
+                // 猜你喜欢
                 let cellIdentifier = "recommendationCell"
                 var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
                 if cell == nil {
                     cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
                 }
-                cell?.textLabel?.text = "section4 row0"
+                cell?.textLabel?.text = "猜你喜欢"
+                cell!.imageView!.image = UIImage(named: "home_cell_heart")
+                cell!.selectionStyle = .None
                 return cell!
             } else {
                 let cellIdentifier = "recommendationsCell"
-                var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
+                var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! HomeRecommendationTableViewCell?
                 if cell == nil {
-                    cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
+                    cell = HomeRecommendationTableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
                 }
-                cell?.textLabel?.text = recommendationArray[row - 1] as? String
+                cell!.setRecommendationModel(recommendationArray[row - 1])
                 return cell!
             }
         }
@@ -252,9 +279,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // MARK: Action
     func onLocationBtn(sender: UIButton) {
-        print("onLocationBtn")
         let arrowBtn = navigationController?.navigationBar.viewWithTag(100) as! UIButton
         arrowBtn.selected = !arrowBtn.selected
+        if arrowBtn.selected {
+            print("打开地点view")
+        } else {
+            print("关闭地点view")
+        }
     }
     
     func onMsgBtn(sender: UIButton) {

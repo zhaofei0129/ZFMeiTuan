@@ -27,13 +27,13 @@ class MineViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // 消息按钮
         let msgBtn = UIButton(frame: CGRect(x: gScreenWidth - 10 - 22, y: 11, width: 22, height: 22))
         msgBtn.setImage(UIImage(named: "mine_navBar_msg"), forState: .Normal)
-        msgBtn.addTarget(self, action: "onMsgBtn:", forControlEvents: .TouchUpInside)
+        msgBtn.addTarget(self, action: #selector(MineViewController.onMsgBtn(_:)), forControlEvents: .TouchUpInside)
         navBar?.addSubview(msgBtn)
         
         // 设置按钮
         let settingBtn = UIButton(frame: CGRect(x: CGRectGetMinX(msgBtn.frame) - 15 - 22, y: 11, width: 22, height: 22))
         settingBtn.setImage(UIImage(named: "mine_navBar_setting"), forState: .Normal)
-        settingBtn.addTarget(self, action: "onSettingBtn:", forControlEvents: .TouchUpInside)
+        settingBtn.addTarget(self, action: #selector(MineViewController.onSettingBtn(_:)), forControlEvents: .TouchUpInside)
         navBar?.addSubview(settingBtn)
     }
     
@@ -99,11 +99,11 @@ class MineViewController: UIViewController, UITableViewDataSource, UITableViewDe
             case 0:
                 let headBtn = UIButton(frame: CGRect(x: 10, y: 10, width: 46, height: 46))
                 headBtn.setImage(UIImage(named: "mine_cell_head"), forState: .Normal)
-                headBtn.addTarget(self, action: "onPersonalBtn:", forControlEvents: .TouchUpInside)
+                headBtn.addTarget(self, action: #selector(MineViewController.onPersonalBtn(_:)), forControlEvents: .TouchUpInside)
                 cell!.contentView.addSubview(headBtn)
                 
                 let nameBtn = UIButton(frame: CGRect(x: CGRectGetMaxX(headBtn.frame) + 10, y: 10, width: 100, height: 46))
-                nameBtn.addTarget(self, action: "onPersonalBtn:", forControlEvents: .TouchUpInside)
+                nameBtn.addTarget(self, action: #selector(MineViewController.onPersonalBtn(_:)), forControlEvents: .TouchUpInside)
                 nameBtn.setTitle("请点击登录", forState: .Normal)
                 nameBtn.titleLabel?.font = UIFont.systemFontOfSize(15)
                 nameBtn.setTitleColor(UIColor.whiteColor(), forState: .Normal)
@@ -111,13 +111,13 @@ class MineViewController: UIViewController, UITableViewDataSource, UITableViewDe
             case 1:
                 // 美团券 评价 收藏
                 let btnNames = ["美团券", "评价", "收藏"]
-                for var i = 0; i < 3; i++ {
+                for i in 0 ..< 3 {
                     let btn = UIButton(frame: CGRect(x: CGFloat(i) * gScreenWidth / 3, y: 0, width: gScreenWidth / 3, height: 44))
                     btn.tag = 100 + i
                     btn.setTitle(btnNames[i], forState: .Normal)
                     btn.titleLabel?.font = UIFont.systemFontOfSize(15)
                     btn.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-                    btn.addTarget(self, action: "onBtn:", forControlEvents: .TouchUpInside)
+                    btn.addTarget(self, action: #selector(MineViewController.onBtn(_:)), forControlEvents: .TouchUpInside)
                     cell!.contentView.addSubview(btn)
                     
                     // 竖线
@@ -136,10 +136,10 @@ class MineViewController: UIViewController, UITableViewDataSource, UITableViewDe
             case 1:
                 // 待付款 待使用 待评价 退款/售后
                 let serviceNames = ["待付款", "待使用", "待评价", "退款/售后"]
-                for var i = 0; i < 4; i++ {
+                for i in 0 ..< 4 {
                     let serviceBtn = UIButton(frame: CGRect(x: CGFloat(i) * gScreenWidth / 4, y: 0, width: gScreenWidth / 4, height: 66))
                     serviceBtn.tag = 110 + i
-                    serviceBtn.addTarget(self, action: "onServiceBtn:", forControlEvents: .TouchUpInside)
+                    serviceBtn.addTarget(self, action: #selector(MineViewController.onServiceBtn(_:)), forControlEvents: .TouchUpInside)
                     cell!.contentView.addSubview(serviceBtn)
                     
                     let serviceImageView = UIImageView(frame: CGRect(x: 0, y: 10, width: gScreenWidth / 4, height: 20))
@@ -183,6 +183,43 @@ class MineViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         return cell!
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let section = indexPath.section
+        let row = indexPath.row
+        switch section {
+        case 0:
+            print("default")
+        case 1:
+            switch row {
+            case 0:
+                print("我的订单")
+            case 1:
+                print("default")
+            default:
+                print("default")
+            }
+        case 2:
+            switch row {
+            case 0:
+                print("美团钱包")
+            case 1:
+                print("抵用券")
+            default:
+                print("default")
+            }
+        case 3:
+            print("积分商城")
+        case 4:
+            print("今日推荐")
+        case 5:
+            print("我要合作")
+        default:
+            print("default")
+        }
+
     }
     
     // MARK: Action

@@ -18,8 +18,8 @@ class MoreViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        setNavBar()
         initData()
+        setNavBar()
         initView()
     }
     
@@ -83,11 +83,10 @@ class MoreViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         if section == 1 && row == 0 {
             cell?.accessoryType = .None
-            cell?.selectionStyle = .None
             let flowSwitch = UISwitch()
             flowSwitch.center = CGPoint(x: gScreenWidth - 10 - flowSwitch.frame.width / 2, y: 22)
             flowSwitch.onTintColor = gSystemGreen
-            flowSwitch.addTarget(self, action: "onSwitch:", forControlEvents: .ValueChanged)
+            flowSwitch.addTarget(self, action: #selector(MoreViewController.onSwitch(_:)), forControlEvents: .ValueChanged)
             cell?.contentView.addSubview(flowSwitch)
         }
         return cell!
@@ -99,43 +98,43 @@ class MoreViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let row = indexPath.row
         switch(section) {
         case 0:
-            print("section 0")
+            print(dataSourceArray[section])
         case 1:
             switch row {
             case 0:
-                print("section 1, row 0")
+                print("default")
             case 1:
-                print("section 1, row 1")
+                print(dataSourceArray[section].objectAtIndex(row))
             case 2:
-                print("section 1, row 2")
+                print(dataSourceArray[section].objectAtIndex(row))
             case 3:
-                print("section 1, row 3")
+                print(dataSourceArray[section].objectAtIndex(row))
             default:
                 print("default")
             }
         case 2:
             switch row {
             case 0:
-                print("section 2, row 0")
+                print(dataSourceArray[section].objectAtIndex(row))
             case 1:
-                print("section 2, row 1")
+                print(dataSourceArray[section].objectAtIndex(row))
             case 2:
-                print("section 2, row 2")
+                print(dataSourceArray[section].objectAtIndex(row))
             case 3:
-                print("section 2, row 3")
+                print(dataSourceArray[section].objectAtIndex(row))
             case 4:
-                print("section 2, row 4")
+                print(dataSourceArray[section].objectAtIndex(row))
             case 5:
-                print("section 2, row 5")
+                print(dataSourceArray[section].objectAtIndex(row))
             default:
                 print("default")
             }
         case 3:
-            print("section 3")		
+            print(dataSourceArray[section].objectAtIndex(row))
         default:
             print("default")
         }
-    }	
+    }
     
     // MARK: Action
     func onSwitch(sender: UISwitch) {
